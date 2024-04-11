@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     public int Speed = 5;
     bool chao, puloDuplo;
     public int Jump = 4;
+    public Transform respawn;
 
     // Start is called before the first frame update
     void Start()
@@ -18,6 +19,8 @@ public class Player : MonoBehaviour
         rig=GetComponent<Rigidbody2D>();
         anim=GetComponent<Animator>();
         sr=GetComponent<SpriteRenderer>();
+        transform.position = respawn.position;
+        
     }
 
     // Update is called once per frame
@@ -73,6 +76,13 @@ public class Player : MonoBehaviour
         {
             chao = true;
             puloDuplo = false;
+        }
+
+        if (collision.gameObject.CompareTag("morteKK"))
+        {
+            transform.position = respawn.position;
+            Debug.Log("vc morreuKKKKKKK");
+
         }
 
 
